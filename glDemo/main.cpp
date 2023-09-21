@@ -7,19 +7,22 @@
 // global variables
 /////////////////////////////////////////////////////////////////////////////////////
 
+// Window size
 unsigned int initWidth = 500;
 unsigned int initHeight = 500;
 
+
 /////////////////////////////////////////////////////////////////////////////////////
-//
+// Function to call when window resized
 /////////////////////////////////////////////////////////////////////////////////////
 void resize(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);		// Draw into entire window
 }
 
+
 /////////////////////////////////////////////////////////////////////////////////////
-//
+// Function to call to handle keyboard input
 /////////////////////////////////////////////////////////////////////////////////////
 void keyboard(GLFWwindow* window, int key, int scancode, int action, int mods) 
 {
@@ -117,9 +120,9 @@ int main()
 		glfwSwapBuffers(window);			// Displays what was just rendered (using double buffering).
 
 		// Poll events (key presses, mouse events)
-//		glfwWaitEvents();					// Use this if no animation.
-		//glfwWaitEventsTimeout(1.0/60.0);	// Use this to animate at 60 frames/sec (timing is NOT reliable)
-		glfwPollEvents();				// Use this version when animating as fast as possible
+		// glfwWaitEvents();				// Use this if no animation.
+		// glfwWaitEventsTimeout(1.0/60.0);	// Use this to animate at 60 frames/sec (timing is NOT reliable)
+		glfwPollEvents();					// Use this version when animating as fast as possible
 	}
 
 	glfwTerminate();
