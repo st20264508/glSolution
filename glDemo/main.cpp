@@ -1,7 +1,6 @@
 
 #include "core.h"
-#include <math.h>
-#include <iostream>
+
 
 // global variables
 
@@ -32,10 +31,12 @@ int main() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 1);
 
-	GLFWwindow* window = glfwCreateWindow(initWidth, initHeight, "GraphicsTemplate - Fixed Function Pipeline", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(initWidth, initHeight, "Real-Time Computer Graphics", NULL, NULL);
+
+	// Check window was created successfully
 	if (window == NULL)
 	{
-		fprintf(stdout, "Failed to create GLFW window!\n");
+		std::cout << "Failed to create GLFW window!\n";
 		glfwTerminate();
 		return -1;
 	}
@@ -90,18 +91,6 @@ void renderScene()
 
 	// Render objects here...
 
-	glBegin(GL_TRIANGLES);
-
-	glColor3ub(255, 0, 0);
-	glVertex2f(-0.5f, -0.5f);
-
-	glColor3ub(0, 255, 0);
-	glVertex2f(0.0f, 0.5f);
-
-	glColor3ub(0, 0, 255);
-	glVertex2f(0.5f, -0.5f);
-
-	glEnd();
 
 	glBindVertexArray(0);
 }
