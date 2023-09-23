@@ -5,8 +5,8 @@
 // global variables
 
 // Window size
-unsigned int initWidth = 500;
-unsigned int initHeight = 500;
+const unsigned int initWidth = 500;
+const unsigned int initHeight = 500;
 
 // Function prototypes
 void renderScene();
@@ -91,8 +91,6 @@ void renderScene()
 
 	// Render objects here...
 
-
-	glBindVertexArray(0);
 }
 
 
