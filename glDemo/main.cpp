@@ -5,8 +5,8 @@
 // global variables
 
 // Window size
-const unsigned int initWidth = 500;
-const unsigned int initHeight = 500;
+const unsigned int initWidth = 512;
+const unsigned int initHeight = 512;
 
 // Function prototypes
 void renderScene();
@@ -90,7 +90,6 @@ void renderScene()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Render objects here...
-
 }
 
 
@@ -100,23 +99,26 @@ void resizeWindow(GLFWwindow* window, int width, int height)
 	glViewport(0, 0, width, height);		// Draw into entire window
 }
 
+
 // Function to call to handle keyboard input
 void keyboardHandler(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	// ignore key up (key release) events
-	if (action == GLFW_RELEASE)
-		return;
+	if (action == GLFW_PRESS) {
 
-	// process keyboard inputs here..
-	switch (key)
-	{
-		case GLFW_KEY_ESCAPE:
-			glfwSetWindowShouldClose(window, true);
-			break;
-
-		default:
+		// check which key was pressed...
+		switch (key)
 		{
+			case GLFW_KEY_ESCAPE:
+				glfwSetWindowShouldClose(window, true);
+				break;
+
+			default:
+			{
+			}
 		}
+	}
+	else if (action == GLFW_RELEASE) {
+		// handle key release events
 	}
 }
 
