@@ -13,7 +13,9 @@ void renderScene();
 void resizeWindow(GLFWwindow* window, int width, int height);
 void keyboardHandler(GLFWwindow* window, int key, int scancode, int action, int mods);
 void updateScene();
-
+void DrawRightTriangle(float x, float y, float a, float b); //x,y is the top corner, a,b is the right corner
+void DrawITriangle(float x, float y, float a, float b); //x,y is top corner, a,b is the bottom left corner
+void DrawQuad(float x, float y, float a, float b);  //x,y is the top left, a,b is the bottom right
 
 int main() {
 
@@ -58,6 +60,7 @@ int main() {
 	// Initialise scene - geometry and shaders etc
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // setup background colour to be black
 
+	//gluOrtho2D(200, 250, 200, 240);
 
 	//
 	// 2. Main loop
@@ -90,6 +93,18 @@ void renderScene()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Render objects here...
+	/*glBegin(GL_TRIANGLES);
+		glVertex2f(-0.75f, 0.75f);
+		glVertex2f(-0.75f, -0.75f);
+		glVertex2f(0.0f, -0.75f);
+		glVertex2f(-0.75f, 0.75f);
+		glVertex2f(0.0f, -0.75f);
+		glVertex2f(0.0f, 0.75f);
+	glEnd();*/
+
+	DrawRightTriangle(-0.5f, 0.5f, 0.0f, 0.0f);
+	DrawQuad(0.15f, -0.15f, 0.75f, -0.75f);  
+	DrawITriangle(-0.5f, -0.25f, -0.75f, -0.75f);
 }
 
 
@@ -125,5 +140,36 @@ void keyboardHandler(GLFWwindow* window, int key, int scancode, int action, int 
 
 // Function called to animate elements in the scene
 void updateScene() {
+}
+
+void DrawRightTriangle(float x, float y, float a, float b)
+{
+	glBegin(GL_TRIANGLES);
+	glVertex2f(x, y); 
+	glVertex2f(x, b); 
+	glVertex2f(a, b); 
+	glEnd();
+}
+
+void DrawITriangle(float x, float y, float a, float b)
+{
+	glBegin(GL_TRIANGLES); 
+	glVertex2f(x, y); 
+	glVertex2f(a, b);  
+	glVertex2f(x, b);  
+	glVertex2f(x, y); 
+	glVertex2f(x, b); 
+	glVertex2f(x + (x - a), b);   
+	glEnd(); 
+}
+
+void DrawQuad(float x, float y, float a, float b)  
+{
+	glBegin(GL_QUADS);
+	glVertex2f(x, y); 
+	glVertex2f(x, b); 
+	glVertex2f(a, b); 
+	glVertex2f(a, y);  
+	glEnd();
 }
 
